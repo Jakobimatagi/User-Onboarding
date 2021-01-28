@@ -34,12 +34,13 @@ function App() {
   const [formValues, setFormValues] =useState(initialValues);
   const [formErrors, setFormErrors] =useState(initialValueErrors);
   const [disabled, setDisabled] =useState(initialDisabled);
+  const [memberList, setList] =useState([])
 
   const getMembers = () => {
     axios
   .get('https://reqres.in/api/users')
   .then((res)=>{
-    setMemebers(res.data)
+    setList(res.data.data)
   })
   .catch(err =>{
     console.log(err)
@@ -50,7 +51,7 @@ function App() {
     axios
     .post('https://reqres.in/api/users', newMember)
     .then((res)=>{
-      setMemebers([res.data, ...members]);
+      setMemebers([res.data.data, ...members]);
       setFormValues(initialValues)
     })
     .catch(err=> console.log(err))
@@ -102,14 +103,20 @@ function App() {
 
       <Form values={formValues} change={inputChange} submit={formSubmit} disabled={disabled} errors={formErrors}/>
 
+    <div>
 
     {
-      members.map(member =>{
+      memberList.map(use => {
         return(
-          <member key={member.id} details={member} />
+          <div>
+            <h2>{use.first_name}</h2>
+            <h3>{use.email}</h3>
+            
+          </div>
         )
       })
     }
+    </div>
     
     </div>
 

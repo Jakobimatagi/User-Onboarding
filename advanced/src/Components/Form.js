@@ -57,10 +57,10 @@ export default function memberForm(props){
 
             <label>Terms and Conditions
                 <input 
-                type='radio'
+                type='checkbox'
                 name='terms'
-                value='terms'
-                checked={values.terms === 'terms'}
+                value='check'
+                checked={values.terms}
                 onChange={onChange}
                 />
             </label>
