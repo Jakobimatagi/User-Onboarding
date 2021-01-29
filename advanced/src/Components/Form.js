@@ -14,7 +14,7 @@ export default function memberForm(props) {
 
   return (
     <form onSubmit={onSubmit}>
-      <button className='submitBtn' disabled={disabled}>Submit</button>
+      <button name="submitBtn" disabled={disabled}>Submit</button>
 
       <div>
         <div>{errors.password}</div>
